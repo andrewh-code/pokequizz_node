@@ -1,0 +1,79 @@
+<head>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<div class="quiz-area" ng-show="inProgress">
+	<!-- quiz still in progress -->
+    <div ng-show="!quizOver">
+        <h2 id="question">Is <p>{{name}}</p> a Pokemon or technology related term?</h2>
+        <br>
+        <div class="container">
+            <center>
+                <div class="btn-group" data-toggle="buttons">
+                    <!--<li ng-repeat="option in options">-->
+                        <label class="btn btn-primary" ng-repeat="option in options">
+                            <input type="radio" name="answer" value="{{option}}"> {{option}}
+                        </label>
+                    <!--</li>-->
+                </div>
+            </center>
+        </div>
+            
+            <!--<ul id="options">
+                <li ng-repeat="option in options">
+                    <label="btn btn-primary">
+                        <input type="radio" name="answer" value="{{option}}"> {{option}}
+                    </label>
+                </li>
+            </ul>-->
+            
+        <br><br><br>
+		<button type="button" class="btn btn-primary btn-lg" ng-click="checkAnswer()" ng-show="answerMode">Submit</button>
+ 
+        <div ng-show="!answerMode">
+            <button type="button" class="btn btn-primary btn-lg" ng-click="nextQuestion()" class="next-question">Next</button>
+			<br>
+			<span ng-show="correctAns">
+                <p class="correct">That is correct!</p>
+                <br>
+                <p>{{reason}}</p>
+                <br>
+                <img src="{{img}}">
+            </span>
+            <br>
+			<span ng-show="!correctAns">
+                <p class="incorrect">Sorry, that is an incorrect answer.</p>
+                <br>
+                <p>{{reason}}</p>
+                <br>
+                <img src="{{img}}">
+            </span>
+            
+		</div>
+	</div>
+
+    <!-- quiz over -->
+    <div ng-show="quizOver">
+        <h2>Quiz is now over</h2>
+        <button type="button" class="btn btn-primary" ng-click="reset()">Play again</button>
+    </div>
+
+    <div id="score">
+        <p class="score"> Score: {{score}}</p>
+    </div>
+
+</div>
+
+
+<div class="intro" ng-show="!inProgress">
+	<p>Welcome to the Pokemon quiz app. Is it a Pokemon or technology related?</p>
+	
+    <button type="button" class="btn btn-primary" id="startQuiz" ng-click="start()">Start the Quiz</button>
+</div>
