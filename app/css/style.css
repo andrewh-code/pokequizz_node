@@ -35,3 +35,8 @@ p.score{
     text-align: center;
 }
 
+/* bootstrap buttons */
+
+.btn-outline-primary:hover, .btn-outline-primary:active, .btn-outline-primary:hover{
+    background: green;
+}
